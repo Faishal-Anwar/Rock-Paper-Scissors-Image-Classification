@@ -1,39 +1,51 @@
-# Klasifikasi Gambar Batu-Gunting-Kertas dengan CNN
+# Rock-Paper-Scissors Image Classification with CNN
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/dicodingacademy/assets/main/asset_final_project/Plot%20Akurasi%20dan%20Loss.png" width="600">
-  <br>
-  <i>(Gambar ini adalah ilustrasi plot akurasi dan loss dari proses pelatihan.)</i>
-</p>
+## Ringkasan Proyek
+Proyek ini merupakan implementasi dari algoritma **Convolutional Neural Network (CNN)** menggunakan TensorFlow/Keras untuk menyelesaikan masalah klasifikasi gambar multi-kelas, yaitu mendeteksi gestur tangan dalam permainan **Batu, Gunting, dan Kertas**.
 
-## 📖 Gambaran Umum Proyek
-Proyek ini mendemonstrasikan implementasi **Convolutional Neural Network (CNN)** untuk menyelesaikan masalah klasifikasi gambar multi-kelas. Studi kasus yang digunakan adalah permainan klasik "Batu, Gunting, Kertas". Model dilatih untuk mengenali dan mengklasifikasikan gambar gestur tangan ke dalam tiga kategori tersebut dengan tingkat akurasi yang tinggi.
+Model dilatih menggunakan dataset dari Dicoding: [`rockpaperscissors`](https://github.com/dicodingacademy/assets/releases/download/release/rockpaperscissors.zip), yang mencakup lebih dari 2.000 gambar gestur dengan latar belakang beragam.
 
-Proyek ini mencakup seluruh alur kerja machine learning, mulai dari pengumpulan dan persiapan data, augmentasi gambar untuk memperkaya dataset, perancangan arsitektur model CNN, proses pelatihan, hingga evaluasi performa model.
+---
 
-### ✨ Fitur Utama
-* **Klasifikasi Tiga Kelas**: Mampu membedakan antara gestur tangan batu, gunting, dan kertas.
-* **Augmentasi Data**: Menggunakan `ImageDataGenerator` dari TensorFlow untuk meningkatkan variasi data latih dan mencegah *overfitting*.
-* **Arsitektur CNN**: Membangun model sekuensial yang terdiri dari lapisan konvolusi dan *pooling* untuk ekstraksi fitur yang efektif.
-* **Evaluasi Model**: Menampilkan visualisasi plot akurasi dan *loss* untuk data latih dan validasi.
-* **Prediksi Interaktif**: Notebook memungkinkan pengguna untuk mengunggah gambar baru dan melihat hasil prediksi dari model yang telah dilatih.
+## Fitur Utama
 
-## ⚙️ Arsitektur Model
-Model yang digunakan adalah arsitektur CNN sekuensial yang dibangun dengan TensorFlow/Keras. Struktur utamanya adalah sebagai berikut:
-1.  **Lapisan Konvolusi (`Conv2D`)**: Beberapa lapisan konvolusi dengan fungsi aktivasi `ReLU` untuk mengekstraksi fitur visual dari gambar seperti tepi, bentuk, dan tekstur.
-2.  **Lapisan Max-Pooling (`MaxPooling2D`)**: Mengurangi dimensi spasial (lebar dan tinggi) dari *feature map* untuk membuat representasi fitur lebih efisien dan tahan terhadap variasi posisi.
-3.  **Lapisan Flatten**: Mengubah data dari format 2D (matriks) menjadi format 1D (vektor) agar dapat diproses oleh lapisan *fully connected*.
-4.  **Lapisan Dropout**: Menonaktifkan sebagian neuron secara acak selama pelatihan untuk mengurangi *overfitting*.
-5.  **Lapisan Dense (Fully Connected)**: Lapisan akhir yang berfungsi sebagai klasifikator. Menggunakan fungsi aktivasi `softmax` untuk menghasilkan probabilitas untuk setiap kelas (batu, gunting, kertas).
+- **Klasifikasi 3 Kelas**: Mendeteksi gestur tangan: batu, gunting, dan kertas.
+- **Augmentasi Citra**: Menggunakan `ImageDataGenerator` untuk memperluas variasi data dan mencegah overfitting.
+- **Arsitektur CNN Modular**: Terdiri dari beberapa lapisan konvolusi, pooling, dropout, dan fully connected.
+- **Akurasi Tinggi**: Model mampu mencapai akurasi validasi **>96.6%**.
+- **Prediksi Interaktif**: Notebook memungkinkan prediksi terhadap gambar baru yang diunggah.
 
-Model dikompilasi menggunakan:
-* **Loss Function**: `categorical_crossentropy`, cocok untuk masalah klasifikasi multi-kelas.
-* **Optimizer**: `SGD` (Stochastic Gradient Descent) atau `Adam` untuk mengoptimalkan bobot model selama pelatihan.
+---
 
-## 📊 Hasil
-Model berhasil dilatih dan mencapai tingkat akurasi **di atas 96.6%** pada set data validasi. Analisis lebih lanjut mengenai kurva pembelajaran (akurasi dan *loss*) tersedia secara lengkap di dalam Jupyter Notebook.
+## Arsitektur Model
 
-## 🛠️ Setup Environment (Penerapan Lokal)
+Model dibangun secara sekuensial dengan TensorFlow:
+
+1. **Conv2D + MaxPooling2D**: Untuk mengekstraksi fitur spasial.
+2. **Flatten**: Mengubah representasi matriks menjadi vektor.
+3. **Dropout**: Mengurangi overfitting.
+4. **Dense (Fully Connected)**: Layer klasifikasi akhir.
+
+**Konfigurasi:**
+- **Optimizer**: `RMSprop`
+- **Loss Function**: `categorical_crossentropy`
+- **Activation**: `ReLU` di layer konvolusi, `Softmax` di output.
+
+---
+
+## Hasil Pelatihan
+
+![image](https://github.com/user-attachments/assets/63c7a5b1-41d9-4d50-84a3-834ca3ff4368)
+
+
+Model menunjukkan performa yang sangat baik dengan:
+
+- Akurasi pelatihan dan validasi tinggi (>96%)
+- Overfitting minimal
+- Visualisasi plot akurasi dan loss tersedia di dalam notebook
+
+---
+## Setup Environment (Penerapan Lokal)
 Ikuti langkah-langkah berikut untuk menyiapkan dan menjalankan proyek ini di lingkungan lokal Anda.
 
 #### 1. Kloning Repository
