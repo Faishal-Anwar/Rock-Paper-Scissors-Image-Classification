@@ -8,8 +8,8 @@ Proyek ini mengembangkan model **Convolutional Neural Network (CNN)** untuk meng
 
 1.  **Kloning repositori:**
     ```bash
-    git clone <URL_repositori_Anda> # Ganti dengan URL repo Anda
-    cd <nama_folder_repo_Anda> # Ganti dengan nama folder repo Anda
+    git clone https://github.com/Faishal-Anwar/Rock-Paper-Scissors-Image-Classification
+    cd Rock-Paper-Scissors-Image-Classification
     ```
 2.  **Instal dependensi:**
     ```bash
