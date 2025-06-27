@@ -1,52 +1,73 @@
-# Klasifikasi Gambar Kertas Gunting Batu dengan CNN
+# Klasifikasi Gambar Batu-Gunting-Kertas dengan CNN
 
----
+<p align="center">
+  <img src="https://raw.githubusercontent.com/dicodingacademy/assets/main/asset_final_project/Plot%20Akurasi%20dan%20Loss.png" width="600">
+  <br>
+  <i>(Gambar ini adalah ilustrasi plot akurasi dan loss dari proses pelatihan.)</i>
+</p>
 
-Proyek ini mengembangkan model **Convolutional Neural Network (CNN)** untuk mengklasifikasikan gambar gestur tangan "batu", "gunting", dan "kertas".
+## 📖 Gambaran Umum Proyek
+Proyek ini mendemonstrasikan implementasi **Convolutional Neural Network (CNN)** untuk menyelesaikan masalah klasifikasi gambar multi-kelas. Studi kasus yang digunakan adalah permainan klasik "Batu, Gunting, Kertas". Model dilatih untuk mengenali dan mengklasifikasikan gambar gestur tangan ke dalam tiga kategori tersebut dengan tingkat akurasi yang tinggi.
 
-## Instalasi
+Proyek ini mencakup seluruh alur kerja machine learning, mulai dari pengumpulan dan persiapan data, augmentasi gambar untuk memperkaya dataset, perancangan arsitektur model CNN, proses pelatihan, hingga evaluasi performa model.
 
-1.  **Kloning repositori:**
-    ```bash
-    git clone https://github.com/Faishal-Anwar/Rock-Paper-Scissors-Image-Classification
-    cd Rock-Paper-Scissors-Image-Classification
-    ```
-2.  **Instal dependensi:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-    Daftar dependensi ada di `requirements.txt`.
+### ✨ Fitur Utama
+* **Klasifikasi Tiga Kelas**: Mampu membedakan antara gestur tangan batu, gunting, dan kertas.
+* **Augmentasi Data**: Menggunakan `ImageDataGenerator` dari TensorFlow untuk meningkatkan variasi data latih dan mencegah *overfitting*.
+* **Arsitektur CNN**: Membangun model sekuensial yang terdiri dari lapisan konvolusi dan *pooling* untuk ekstraksi fitur yang efektif.
+* **Evaluasi Model**: Menampilkan visualisasi plot akurasi dan *loss* untuk data latih dan validasi.
+* **Prediksi Interaktif**: Notebook memungkinkan pengguna untuk mengunggah gambar baru dan melihat hasil prediksi dari model yang telah dilatih.
 
-## Penggunaan
+## ⚙️ Arsitektur Model
+Model yang digunakan adalah arsitektur CNN sekuensial yang dibangun dengan TensorFlow/Keras. Struktur utamanya adalah sebagai berikut:
+1.  **Lapisan Konvolusi (`Conv2D`)**: Beberapa lapisan konvolusi dengan fungsi aktivasi `ReLU` untuk mengekstraksi fitur visual dari gambar seperti tepi, bentuk, dan tekstur.
+2.  **Lapisan Max-Pooling (`MaxPooling2D`)**: Mengurangi dimensi spasial (lebar dan tinggi) dari *feature map* untuk membuat representasi fitur lebih efisien dan tahan terhadap variasi posisi.
+3.  **Lapisan Flatten**: Mengubah data dari format 2D (matriks) menjadi format 1D (vektor) agar dapat diproses oleh lapisan *fully connected*.
+4.  **Lapisan Dropout**: Menonaktifkan sebagian neuron secara acak selama pelatihan untuk mengurangi *overfitting*.
+5.  **Lapisan Dense (Fully Connected)**: Lapisan akhir yang berfungsi sebagai klasifikator. Menggunakan fungsi aktivasi `softmax` untuk menghasilkan probabilitas untuk setiap kelas (batu, gunting, kertas).
 
-Jalankan **Jupyter Notebook** `ML_KLASIFIKASI_KERTAS_GUNTING_BATU_DENGAN_ALGORITMA_CNN.ipynb`. Notebook ini akan:
-* Mengunduh dan menyiapkan dataset.
-* Melakukan augmentasi data.
-* Melatih model CNN.
-* Menampilkan hasil evaluasi (akurasi & _loss_).
-* Memungkinkan Anda mencoba prediksi dengan gambar baru.
+Model dikompilasi menggunakan:
+* **Loss Function**: `categorical_crossentropy`, cocok untuk masalah klasifikasi multi-kelas.
+* **Optimizer**: `SGD` (Stochastic Gradient Descent) atau `Adam` untuk mengoptimalkan bobot model selama pelatihan.
 
-## Arsitektur Model
+## 📊 Hasil
+Model berhasil dilatih dan mencapai tingkat akurasi **di atas 96.6%** pada set data validasi. Analisis lebih lanjut mengenai kurva pembelajaran (akurasi dan *loss*) tersedia secara lengkap di dalam Jupyter Notebook.
 
-Model menggunakan arsitektur CNN Sequential dengan lapisan konvolusi, _max pooling_, _dropout_, dan _dense_. Model dikompilasi dengan _loss_ `categorical_crossentropy` dan _optimizer_ `SGD`.
+## 🛠️ Setup Environment (Penerapan Lokal)
+Ikuti langkah-langkah berikut untuk menyiapkan dan menjalankan proyek ini di lingkungan lokal Anda.
 
-## Hasil
+#### 1. Kloning Repository
+Buka terminal atau command prompt Anda dan jalankan perintah berikut:
+```bash
+git clone [https://github.com/Faishal-Anwar/Rock-Paper-Scissors-Image-Classification.git](https://github.com/Faishal-Anwar/Rock-Paper-Scissors-Image-Classification.git)
+cd Rock-Paper-Scissors-Image-Classification
+```
 
-Model dilatih hingga mencapai akurasi **di atas 96,6%** pada data validasi. Plot akurasi dan _loss_ selama pelatihan juga tersedia di dalam _notebook_.
+#### 2. Buat Virtual Environment
+Sangat disarankan untuk menggunakan virtual environment agar dependensi proyek tidak bercampur dengan instalasi Python global Anda.
+```bash
+virtualenv venv
+```
 
-![Training and Validation Accuracy and Loss](https://raw.githubusercontent.com/dicodingacademy/assets/main/asset_final_project/Plot%20Akurasi%20dan%20Loss.png)
-*(Gambar ilustrasi, ganti dengan plot hasil pelatihan Anda.)*
+#### 3. Aktifkan Virtual Environment
+```bash
+venv\Scripts\activate
+```
+macOS/Linux:
+```bash
+source venv/bin/activate
+```
+Setelah aktif, nama environment (venv) akan muncul di awal baris terminal Anda.
 
-## Kontribusi
+#### 4. Instal Dependensi
+Instal semua pustaka Python yang dibutuhkan yang tercantum dalam file requirements.txt.
+```bash
+pip install -r requirements.txt
+```
 
-Kontribusi dalam bentuk _issue_ atau _pull request_ sangat kami hargai.
-
-## Lisensi
-
-Proyek ini dilisensikan di bawah **Lisensi MIT**.
-
-## Kontak
-
-* **Faishal Anwar Hasyim**
-* [LinkedIn](https://www.linkedin.com/in/faishal-anwar-hasyim-1391682a5/)
-* [Profil Dicoding](https://www.dicoding.com/users/anwarfaishal86/academies)
+#### 5. Jalankan Jupyter Notebook
+Setelah semua dependensi terinstal, jalankan server Jupyter Notebook.
+```bash
+jupyter notebook
+```
+Perintah ini akan membuka tab baru di browser web Anda. Dari sana, navigasikan dan buka file ML_KLASIFIKASI_KERTAS_GUNTING_BATU_DENGAN_ALGORITMA_CNN.ipynb untuk menjalankan kode.
