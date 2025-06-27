@@ -70,4 +70,4 @@ Setelah semua dependensi terinstal, jalankan server Jupyter Notebook.
 ```bash
 jupyter notebook
 ```
-Perintah ini akan membuka tab baru di browser web Anda. Dari sana, navigasikan dan buka file ML_KLASIFIKASI_KERTAS_GUNTING_BATU_DENGAN_ALGORITMA_CNN.ipynb untuk menjalankan kode.
+Perintah ini akan membuka tab baru di browser web Anda. Dari sana, navigasikan dan buka file notebook.ipynb untuk menjalankan kode.
